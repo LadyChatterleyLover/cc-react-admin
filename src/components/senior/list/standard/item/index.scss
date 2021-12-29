@@ -1,0 +1,22 @@
+.cc-standard-list-desc-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &:last-child {
+    border-right: none;
+  }
+  &-title {
+    margin-bottom: 4px;
+    color: rgba(0, 0, 0, .45);
+    font-size: 14px;
+  }
+
+  &-desc {
+    color: rgba(0, 0, 0, .85);
+    font-size: 24px;
+  }
+  &-border {
+    border-right: 1px solid #f0f0f0;
+  }
+}

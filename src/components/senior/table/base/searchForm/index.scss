@@ -1,0 +1,11 @@
+.cc-base-table-search-form {
+  &-down-icon {
+    position: relative;
+    color: #1890ff;
+    left: -14px;
+    transition: all 0.3s;
+  }
+  &-rotate {
+    transform: rotate(180deg);
+  }
+}

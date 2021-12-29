@@ -1,0 +1,30 @@
+.cc-form-step {
+  &-container {
+    width: max-content;
+    min-width: 520px;
+    max-width: 100%;
+    margin: auto;
+  }
+
+  &-info {
+    border: 1px solid #f0f0f0;
+
+    &-item {
+      border-bottom: 1px solid #f0f0f0;
+      &-label {
+        padding: 16px 24px;
+        border-right: 1px solid #f0f0f0;
+        background: #fafafa;
+      }
+      &-value {
+        padding: 16px 24px;
+        border-right: none;
+      }
+    }
+  }
+  &-result {
+    margin-top: 24px;
+    padding: 24px 40px;
+    background-color: #fafafa;
+  }
+}

@@ -1,0 +1,33 @@
+.cc-senior-detail {
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-title {
+      margin-right: 12px;
+      margin-bottom: 0;
+      color: rgba(0, 0, 0, .85);
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 32px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &-container {
+    display: flex;
+    &-content {
+      flex: 1;
+    }
+    &-extra {
+      min-width: 242px;
+      margin-left: 88px;
+      text-align: right;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

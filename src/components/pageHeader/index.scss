@@ -1,0 +1,21 @@
+.cc-page-header {
+  background: #fff;
+  width: calc(100vw - 200px);
+  position: relative;
+  left: -42px;
+  top: -48px;
+  padding-top: 20px;
+  padding-left: 20px;
+
+  &-title {
+    margin-right: 12px;
+    margin-bottom: 0px;
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 32px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}

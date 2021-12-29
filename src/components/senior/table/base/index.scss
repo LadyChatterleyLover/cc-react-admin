@@ -1,0 +1,50 @@
+.cc-base-table {
+  &-extra {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &-icon {
+      font-size: 18px;
+      margin-right: 15px;
+
+      &:hover {
+        color: #40a9ff;
+      }
+    }
+  }
+
+  &-setting-title {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    padding-left: 12px;
+    color: rgba(0, 0, 0, .45);
+    font-size: 12px;
+  }
+
+  &-setting-item {
+    cursor: move;
+    padding: 5px 16px 4px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background: #e6f7ff;
+    }
+
+    &:hover &-action {
+      display: block;
+    }
+
+    &-action {
+      color: #1890ff;
+      display: none;
+    }
+  }
+}
+
+.cc-base-table-popover-content-padding {
+  .ant-popover-inner-content {
+    padding: 0;
+  }
+}

@@ -1,0 +1,30 @@
+.cc-account-center {
+  &-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-name {
+      margin-bottom: 4px;
+      margin-top: 16px;
+      color: rgba(0, 0, 0, .85);
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+    &-team {
+      &-item {
+        &-member {
+          display: block;
+          margin-bottom: 24px;
+          overflow: hidden;
+          color: rgba(0, 0, 0, .85);
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          word-break: break-all;
+        }
+      }
+    }
+  }
+}

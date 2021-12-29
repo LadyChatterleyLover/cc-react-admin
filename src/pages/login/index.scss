@@ -1,0 +1,41 @@
+.cc-admin-login {
+  &-container {
+    background-image: url(https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg);
+    background-repeat: no-repeat;
+    background-position: center 110px;
+    background-size: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: #f0f2f5;
+
+    &-content {
+      margin-top: 40px;
+      padding: 32px 0 24px;
+
+      &-title {
+        position: relative;
+        top: 2px;
+        color: rgba(0, 0, 0, .85);
+        font-weight: 600;
+        font-size: 33px;
+        text-align: center;
+      }
+
+      &-desc {
+        margin-top: 12px;
+        margin-bottom: 40px;
+        color: rgba(0, 0, 0, .45);
+        font-size: 14px;
+      }
+    }
+
+    &-main {
+      width: 328px;
+    }
+    &-footer {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
