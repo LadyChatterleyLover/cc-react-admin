@@ -1,6 +1,6 @@
 import {
   useRoutes,
-  HashRouter,
+  BrowserRouter
 } from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import { ConfigProvider } from 'antd'
@@ -8,7 +8,6 @@ import zh_CN from 'antd/es/locale/zh_CN'
 import en_US from 'antd/es/locale/en_US'
 
 
-import Home from './pages/home/home'
 import Layouts from './pages/layouts/layouts'
 import Login from './pages/login/login'
 import NotFound from './pages/notFound/notFound'
@@ -52,6 +51,10 @@ import AccountSetting from './pages/senior/account/setting'
 import SearchArticle from './pages/senior/list/searchArticle'
 import SearchProject from './pages/senior/list/searchProject'
 import SearchApplication from './pages/senior/list/searchApplication'
+import Draggable from './pages/draggable'
+import DataList from './pages/dataList'
+import Analysis from './pages/analysis/analysis';
+import Grid from './pages/grid';
 
 const Routes = () => {
   let routes = useRoutes([
@@ -65,7 +68,7 @@ const Routes = () => {
       children: [
         {
           path: '/dashboard/analysis',
-          element: <Home />,
+          element: <Analysis />,
         },
         {
           path: '/dashboard/workplace',
@@ -94,6 +97,14 @@ const Routes = () => {
         {
           path: '/components/rotateVerify',
           element: <RotateVerify />,
+        },
+        {
+          path: '/components/dataList',
+          element: <DataList />,
+        },
+        {
+          path: '/components/grid',
+          element: <Grid />,
         },
         {
           path: '/components/slideVerify',
@@ -146,6 +157,10 @@ const Routes = () => {
         {
           path: '/feat/countup',
           element: <Countup />,
+        },
+        {
+          path: '/feat/draggable',
+          element: <Draggable />,
         },
         {
           path: '/feat/debounce',
@@ -254,9 +269,9 @@ const App = () => {
     <ConfigProvider 
     locale={locale === 'zh_CN' ? zh_CN : en_US}
     >
-      <HashRouter>
+      <BrowserRouter>
         <Routes />
-      </HashRouter>
+      </BrowserRouter>
     </ConfigProvider>
   )
 }

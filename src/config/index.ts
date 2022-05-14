@@ -75,6 +75,20 @@ export const menuData = [
         children: [],
       },
       {
+        title: '数据列表',
+        key: '/components/dataList',
+        t: 'DataList',
+        icon: 'UnorderedListOutlined',
+        children: [],
+      },
+      {
+        title: '宫格',
+        key: '/components/grid',
+        t: 'Grid',
+        icon: 'AppstoreOutlined',
+        children: [],
+      },
+      {
         title: '滑动验证码',
         key: '/components/slideVerify',
         t: 'SlideVerify',
@@ -161,17 +175,23 @@ export const menuData = [
         t: 'Countup'
       },
       {
+        title: '元素拖动',
+        key: '/feat/draggable',
+        icon: 'DragOutlined',
+        t: 'Draggable'
+      },
+      {
         title: '防抖',
         key: '/feat/debounce',
         icon: 'FilterOutlined',
         t: 'Debounce'
       },
       {
-        title: '防抖',
+        title: '节流',
         key: '/feat/throttle',
         icon: 'MoreOutlined',
         t: 'Throttle'
-      }
+      },
     ]
   },
   {

@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
@@ -13,6 +12,7 @@
     "@fullcalendar/interaction": "^5.10.1",
     "@types/countup.js": "^2.0.4",
     "@types/lodash": "^4.14.178",
+    "@types/qrcode.react": "^1.0.2",
     "@types/sortablejs": "^1.10.7",
     "@zxcvbn-ts/core": "^1.2.0",
     "antd": "^4.17.3",
@@ -23,6 +23,7 @@
     "fullscreen": "^1.1.1",
     "i18next": "^21.6.0",
     "lodash": "^4.17.21",
+    "qrcode.react": "^1.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-i18next": "^11.15.1",

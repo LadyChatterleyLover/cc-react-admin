@@ -1,0 +1,20 @@
+.cc-pull-refresh {
+  overflow: hidden;
+  &-wrap {
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+    &-head {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      color: #969799;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(-100%);
+    }
+  }
+}
