@@ -1,0 +1,28 @@
+.cc-split-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  &-left {
+    overflow: auto;
+  }
+  &-trigger {
+    &-wrapper {
+      background: #f8f8f9;
+      border-top: none;
+      border-bottom: none;
+      cursor: col-resize;
+      border: 1px solid #dcdee2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      &-bar {
+        background: rgba(23, 35, 61, 0.25);
+      }
+    }
+  }
+  &-right {
+    overflow: auto;
+    flex: 1;
+  }
+}

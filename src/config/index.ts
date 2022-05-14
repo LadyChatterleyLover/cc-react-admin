@@ -89,6 +89,13 @@ export const menuData = [
         children: [],
       },
       {
+        title: '分割面板',
+        key: '/components/split',
+        t: 'Split',
+        icon: 'ExportOutlined',
+        children: [],
+      },
+      {
         title: '滑动验证码',
         key: '/components/slideVerify',
         t: 'SlideVerify',

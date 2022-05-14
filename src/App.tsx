@@ -55,6 +55,7 @@ import Draggable from './pages/draggable'
 import DataList from './pages/dataList'
 import Analysis from './pages/analysis/analysis';
 import Grid from './pages/grid';
+import Split from './pages/split/index';
 
 const Routes = () => {
   let routes = useRoutes([
@@ -105,6 +106,10 @@ const Routes = () => {
         {
           path: '/components/grid',
           element: <Grid />,
+        },
+        {
+          path: '/components/split',
+          element: <Split />,
         },
         {
           path: '/components/slideVerify',
