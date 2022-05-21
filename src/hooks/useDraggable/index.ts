@@ -55,7 +55,6 @@ export const useDraggable = (options?: UseDraggableOptions) => {
     window.addEventListener('pointerup', end)
 
     return () => {
-      target.current!.removeEventListener('pointerdown', start)
       window.removeEventListener('pointermove', move)
       window.removeEventListener('pointerup', end)
     }

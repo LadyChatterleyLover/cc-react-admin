@@ -1,9 +1,11 @@
-import { Menu, Dropdown, message } from 'antd'
-import { useSelector, useDispatch } from 'react-redux'
-import { CloseOutlined } from '@ant-design/icons'
-import { useLocation, useNavigate } from 'react-router-dom'
-import './index.scss'
-import { CSSProperties } from 'react';
+import { Menu, Dropdown, Tabs, message } from "antd"
+import { useSelector, useDispatch } from "react-redux"
+import { useLocation, useNavigate } from "react-router-dom"
+import "./index.scss"
+import { CSSProperties } from "react"
+
+const { TabPane } = Tabs
+
 interface Props {
   style?: CSSProperties
 }
@@ -14,57 +16,58 @@ const Navs = (props: Props) => {
   const dispatch = useDispatch()
   const navs = useSelector((state: any) => state.nav.navs)
 
-  const clickItem = (item: any) => {
-    if (location.pathname !== item.key) {
-      navigate(item.key)
+  const clickItem = (key: string) => {
+    if (location.pathname !== key) {
+      navigate(key)
     }
   }
   const clickMenu = ({ key }: { key: string }, item: any) => {
     let index = navs.findIndex((i: any) => i.key === item.key)
-    if (key === 'refresh') {
+    if (key === "refresh") {
       window.location.pathname = location.pathname
-    } else if (key === 'closeLeft') {
+    } else if (key === "closeLeft") {
       if (index === 0) {
-        message.warning('已经是第一个啦')
+        message.warning("已经是第一个啦")
       } else {
         let arr = navs.filter((_: any, idx: number) => {
           return idx >= index
         })
         dispatch({
-          type: 'setNav',
-          data: arr
+          type: "setNav",
+          data: arr,
         })
-        localStorage.setItem('navs', JSON.stringify(arr))
+        localStorage.setItem("navs", JSON.stringify(arr))
       }
-    } else if (key === 'closeRight') {
+    } else if (key === "closeRight") {
       if (index === navs.length - 1) {
-        message.warning('已经是最后一个啦')
+        message.warning("已经是最后一个啦")
       } else {
         let arr = navs.filter((_: any, idx: number) => {
           return idx <= index
         })
         dispatch({
-          type: 'setNav',
-          data: arr
+          type: "setNav",
+          data: arr,
         })
-        localStorage.setItem('navs', JSON.stringify(arr))
+        localStorage.setItem("navs", JSON.stringify(arr))
       }
     } else {
       if (navs.length === 1) {
-        message.warning('没有其他啦')
+        message.warning("没有其他啦")
       } else {
         let arr = navs.filter((_: any, idx: number) => {
           return idx === index
         })
         dispatch({
-          type: 'setNav',
-          data: arr
+          type: "setNav",
+          data: arr,
         })
-        localStorage.setItem('navs', JSON.stringify(arr))
+        localStorage.setItem("navs", JSON.stringify(arr))
       }
     }
   }
-  const menu = (item: any) => {
+  const menu = () => {
+    let item = navs.find((i: any) => i.key === location.pathname)
     return (
       <Menu onClick={(e) => clickMenu(e, item)}>
         <Menu.Item key="refresh">刷新</Menu.Item>
@@ -74,32 +77,31 @@ const Navs = (props: Props) => {
       </Menu>
     )
   }
-  const close = (e: MouseEvent, item: any) => {
-    e.stopPropagation()
-    let index = navs.findIndex((i: any) => i.key === item.key)
-    let current = navs.find(() => location.pathname === item.key)
+  const close = (key: any) => {
+    let index = navs.findIndex((i: any) => i.key === key)
+    let current = navs.find(() => location.pathname === key)
     if (navs.length === 1) {
-      navigate('/dashboard/analysis')
+      navigate("/dashboard/analysis")
       let arr = [
         {
-          title: '分析页',
-          key: '/dashboard/analysis'
-        }
+          title: "分析页",
+          key: "/dashboard/analysis",
+        },
       ]
       dispatch({
-        type: 'setNav',
-        data: arr
+        type: "setNav",
+        data: arr,
       })
-      localStorage.setItem('navs', JSON.stringify(arr))
+      localStorage.setItem("navs", JSON.stringify(arr))
     } else {
       let arr = navs.filter((i: any) => {
-        return i.key !== item.key
+        return i.key !== key
       })
       dispatch({
-        type: 'setNav',
-        data: arr
+        type: "setNav",
+        data: arr,
       })
-      localStorage.setItem('navs', JSON.stringify(arr))
+      localStorage.setItem("navs", JSON.stringify(arr))
       if (current) {
         if (index !== 0) {
           navigate(navs[index - 1].key)
@@ -111,30 +113,16 @@ const Navs = (props: Props) => {
   }
 
   return (
-    <div className='cc-nav-container' style={props.style!}>
-      {
-        navs.length ?
-          navs.map((item: any) => {
-            return (
-              <Dropdown key={item.key} overlay={menu(item)} trigger={['contextMenu']}>
-                <div
-                  className={`cc-nav-container-item 
-              ${location.pathname === item.key ? 'cc-nav-container-item-active' : ''}`}
-                  onClick={() => clickItem(item)}>
-                  {
-                    location.pathname === item.key ?
-                      <div className='cc-nav-container-item-circle'></div> : null
-                  }
-                  <div>{item.title}</div>
-                  <div>
-                    <CloseOutlined onClick={(e: any) => close(e, item)} style={{ marginLeft: 4 }} />
-                  </div>
-                </div>
-              </Dropdown>
-            )
-          })
-          : null
-      }
+    <div className="cc-nav-container" style={props.style!}>
+      {navs.length ? (
+        <Dropdown overlay={menu} trigger={["contextMenu"]}>
+          <Tabs size='small' hideAdd type="editable-card" activeKey={location.pathname} onChange={clickItem} onEdit={close}>
+            {navs.map((item: any) => {
+              return <TabPane closable tab={item.title} key={item.key}></TabPane>
+            })}
+          </Tabs>
+        </Dropdown>
+      ) : null}
     </div>
   )
 }

@@ -12,6 +12,7 @@
     "@types/countup.js": "^2.0.4",
     "@types/lodash": "^4.14.178",
     "@types/qrcode.react": "^1.0.2",
+    "@types/react-redux": "^7.1.24",
     "@types/sortablejs": "^1.10.7",
     "@zxcvbn-ts/core": "^1.2.0",
     "antd": "^4.17.3",
