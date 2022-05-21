@@ -1,6 +1,6 @@
 import { useState, useEffect, CSSProperties } from 'react'
 import { Avatar, Select, Dropdown, Menu } from 'antd'
-import { SearchOutlined, FontColorsOutlined, UserOutlined, SettingOutlined, FieldTimeOutlined, DownOutlined } from '@ant-design/icons'
+import { FullscreenOutlined, FullscreenExitOutlined, SearchOutlined, FontColorsOutlined, UserOutlined, SettingOutlined, FieldTimeOutlined, DownOutlined } from '@ant-design/icons'
 import './index.scss'
 import {
   MenuUnfoldOutlined,
@@ -13,7 +13,7 @@ import { menuData } from '../../config'
 import debounce from 'lodash/debounce'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-
+import { useFullscreen } from '../../hooks/useFullscreen'
 
 
 interface Props {
@@ -31,6 +31,9 @@ const NavHeader = (props: Props) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const navMode = useSelector((state: any) => state.base.navMode)
+  const { isFullscreen, toggleFullscreen } = useFullscreen()
+
+
   const { collapsed, toggle, style } = props
   const [selectCollapsed, setSelectCollapsed] = useState<boolean>(false)
   const [options, setOptions] = useState<OptionItem[]>([])
@@ -138,7 +141,6 @@ const NavHeader = (props: Props) => {
   )
   
   const clickUserMenu = ({ key }: { key: string }) => {
-    console.log(key)
     const current = find(menuData, key)
     if (key.includes('center') || key.includes('setting')) {
       if (localStorage.getItem('navs')) {
@@ -298,6 +300,9 @@ const NavHeader = (props: Props) => {
           <CcNotification count={5} iconSize={18} color={navMode === 'mix' ? '#fff' : '#000'}>
             <CcList list={list} actions={actions}></CcList>
           </CcNotification>
+        </div>
+        <div style={{ fontSize: 18 }} className='cc-admin-header-right-item' onClick={toggleFullscreen}>
+          {isFullscreen ? <FullscreenExitOutlined/> : < FullscreenOutlined/>}
         </div>
         <Dropdown overlay={userMenu}>
           <div className='cc-admin-header-right-item'>

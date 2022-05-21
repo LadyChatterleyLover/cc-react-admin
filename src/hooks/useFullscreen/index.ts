@@ -6,7 +6,8 @@ export interface Options {
   onEnter?: () => void
 }
 
-export const useFullscreen = (target: HTMLElement = document.body, options?: Options) => {
+export const useFullscreen = ( options?: Options) => {
+  const target = useRef<any>(document.body)
   const { onExit, onEnter } = options || {}
 
   const onExitRef = useRef(onExit)
@@ -28,7 +29,7 @@ export const useFullscreen = (target: HTMLElement = document.body, options?: Opt
   }
 
   const enterFullscreen = () => {
-    const el = target
+    const el = target.current
     if (!el) {
       return
     }
@@ -66,6 +67,7 @@ export const useFullscreen = (target: HTMLElement = document.body, options?: Opt
     }
   }, [])
   return {
+    ref: target,
     isFullscreen: state,
     enterFullscreen,
     exitFullscreen,
