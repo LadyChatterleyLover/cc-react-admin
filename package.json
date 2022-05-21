@@ -6,7 +6,6 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.7.0",
     "@fullcalendar/core": "^5.10.1",
     "@fullcalendar/daygrid": "^5.10.1",
     "@fullcalendar/interaction": "^5.10.1",
@@ -35,6 +34,7 @@
     "wangeditor": "^4.7.10"
   },
   "devDependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@commitlint/cli": "^16.2.4",
     "@commitlint/config-conventional": "^16.2.4",
     "@types/echarts": "^4.9.12",
@@ -42,11 +42,17 @@
     "@types/react-dom": "^17.0.10",
     "@vitejs/plugin-react": "^1.0.7",
     "cz-customizable": "^6.3.0",
+    "icons": "link:@types/@ant-design/icons",
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
     "sass": "^1.45.0",
     "sass-loader": "^12.4.0",
     "typescript": "^4.3.2",
     "vite": "^2.7.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
   }
 }

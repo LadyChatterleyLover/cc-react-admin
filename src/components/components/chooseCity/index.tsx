@@ -54,6 +54,7 @@ const Content = (props: Props) => {
         <div>
           <Select
             placeholder="请搜索城市"
+            allowClear
             showSearch
             optionFilterProp="children"
             style={{ width: 262, marginLeft: 20 }}
