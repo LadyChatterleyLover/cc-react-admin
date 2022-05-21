@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react';
 
 export interface Options {
   width?: number,
@@ -10,6 +10,7 @@ export const useWatermark = (str: string) => {
   const id = domSymbol.toString()
   const appendEl: HTMLElement | null = document.body
   const watermarkEl = useRef<HTMLElement | null>()
+  const [isCreated, setIsCreated] = useState<boolean>(false)
 
   const func = () => {
     const el = appendEl
@@ -18,7 +19,7 @@ export const useWatermark = (str: string) => {
     update({ height, width })
   }
 
-  const createCanvas = ( options?: Options) => {
+  const createCanvas = (options?: Options) => {
     const width = options?.width || 300
     const height = options?.height || 240
     const canvas = document.createElement('canvas')
@@ -39,7 +40,7 @@ export const useWatermark = (str: string) => {
     width?: number
     height?: number
     str?: string
-  } = {width: 300, height: 240}) => {
+  } = { width: 300, height: 240 }) => {
     const el = watermarkEl
     if (!el) return
     el.current!.style.width = `${options.width}px`
@@ -47,19 +48,22 @@ export const useWatermark = (str: string) => {
     el.current!.style.background = `url(${createCanvas()}) left top repeat`
   }
   const create = (str: string) => {
-    const div = document.createElement('div')
-    watermarkEl.current = div
-    div.id = id
-    div.style.pointerEvents = 'none'
-    div.style.top = '0px'
-    div.style.left = '0px'
-    div.style.position = 'absolute'
-    div.style.zIndex = '100000'
-    const el = appendEl
-    if (!el) return id
-    const { clientHeight: height, clientWidth: width } = el
-    update({ str, width, height })
-    el.appendChild(div)
+    if (!isCreated) {
+      const div = document.createElement('div')
+      watermarkEl.current = div
+      div.id = id
+      div.style.pointerEvents = 'none'
+      div.style.top = '0px'
+      div.style.left = '0px'
+      div.style.position = 'absolute'
+      div.style.zIndex = '100000'
+      const el = appendEl
+      if (!el) return id
+      const { clientHeight: height, clientWidth: width } = el
+      update({ str, width, height })
+      el.appendChild(div)
+      setIsCreated(true)
+    }
     return id
   }
   const clear = () => {
@@ -68,6 +72,7 @@ export const useWatermark = (str: string) => {
     el.removeChild(watermarkEl.current!)
     watermarkEl.current = null
     window.removeEventListener('resize', func)
+    setIsCreated(false)
   }
   const setWatermark = () => {
     create(str)
