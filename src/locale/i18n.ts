@@ -96,7 +96,7 @@ const resources = {
       "Throttle": "节流",
       "Draggable": "拖动",
       "DataList": "数据列表",
-      "Senior": "高级组件",
+      "Senior": "页面",
       "SeniorForm": "高级表单",
       "StepForm": "分步表单",
       "SeniorTable": "高级表格",

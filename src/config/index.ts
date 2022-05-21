@@ -202,7 +202,7 @@ export const menuData = [
     ]
   },
   {
-    title: '高级组件',
+    title: '页面',
     key: '/senior',
     icon: 'PaperClipOutlined',
     t: 'Senior',
