@@ -116,7 +116,7 @@ const Navs = (props: Props) => {
     <div className="cc-nav-container" style={props.style!}>
       {navs.length ? (
         <Dropdown overlay={menu} trigger={["contextMenu"]}>
-          <Tabs size='small' hideAdd type="editable-card" activeKey={location.pathname} onChange={clickItem} onEdit={close}>
+          <Tabs size='small' style={{width: 'fit-content'}} hideAdd type="editable-card" activeKey={location.pathname} onChange={clickItem} onEdit={close}>
             {navs.map((item: any) => {
               return <TabPane closable tab={item.title} key={item.key}></TabPane>
             })}
